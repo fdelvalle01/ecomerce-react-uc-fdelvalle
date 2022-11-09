@@ -1,0 +1,18 @@
+#divPadre {
+    height:100px;
+    width:800px;
+    text-align:center;
+    margin:0px auto;
+}
+#divHijo {
+     margin:0px auto;
+}
+
+.TableTask{
+    margin:0px auto;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+  }
+  
