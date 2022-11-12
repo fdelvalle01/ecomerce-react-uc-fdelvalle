@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './Tarea.css'
 
 function insertLocalStorage(key, value){
@@ -10,28 +10,19 @@ function insertLocalStorage(key, value){
 const Tarea = () => {
 
     const [tareasInput, setTareasInput] = useState(''); // Inicializo el estado de tareas como un arreglo vacío
-    const [checkFilter, setCheckFilter] = useState([]);
+    const [checkFilter, setCheckFilter] = useState(false); // Inicializo el estado de checkFilter como false
     //hooks de estado para manejar el estado de la tarea
     const [listTask, setListTask] = useState([]);
-    const [listTaskOriginal, setListTaskOriginal] = useState([]);
-    
-    //useEffect que al checkear o descheckear una tarea, actualiza el estado de la tarea y las filtra en la lista
-    useEffect(() => {
-        if(checkFilter){
-            setListTaskOriginal(listTask);
-            const lists = listTask.filter(tarea => tarea.estado === false);
-            setListTask(lists);
-        }else{
-            setListTask(listTaskOriginal);
-        }
-    }, [checkFilter]);
+
+    // id de la tarea que se esta editando
+    const seqIdRef = useRef(0);
 
     //useEffect que  al cargar la página, obtiene la informacion de tareas en el local storage
     useEffect(() => {
         //obtengo el arreglo de tareas del localStorage
         const tareasStorage = localStorage.getItem('tareas');
         //si hay tareas en el localStorage, las cargo en el estado
-        if(tareasStorage !== ''){
+        if(tareasStorage !== '' && tareasStorage !== null){
             setListTask(JSON.parse(tareasStorage))
         }
     }, []);
@@ -41,9 +32,13 @@ const Tarea = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         if(tareasInput !== "" && tareasInput !== " "){
-            setListTask([...listTask, {id: listTask.length, nombre: tareasInput, estado: false}]);
+            let listLocal = [...listTask, {id: seqIdRef.current, nombre: tareasInput, estado: false}];
+            setListTask(listLocal);
+            seqIdRef.current += 1;
             setTareasInput(''); //Limpiado de input al ingresar un campo
-            insertLocalStorage('tareas', listTask); //Insert localStorage, key tareas
+            insertLocalStorage('tareas', listLocal); //Insert localStorage, key tareas
+        }else{
+            alert("Debe ingresar un texto");
         }
     }
 
@@ -59,7 +54,6 @@ const Tarea = () => {
         const nuevaLista = [...listTask];
         nuevaLista[index].estado = event.target.checked;
         setListTask(nuevaLista);
-        
     }
     
     //Eliminar una tarea específica
@@ -68,6 +62,27 @@ const Tarea = () => {
         setListTask(nuevaLista);
         insertLocalStorage('tareas', nuevaLista); //Insert localStorage, key tareas
     }
+
+    //Modificar una tarea en especifico dentro de la lista de tareas, listTask, al obtener el valor del mismo input. 
+    function modifyTask(index, item, e){
+        if(tareasInput !== "" && tareasInput !== " "){
+            const mapBasedUpdate = listTask.map((element) => {
+                if (element.id !== item.id) return element;
+                return {
+                  ...element,
+                  nombre:  tareasInput,
+                };
+              });
+            setTareasInput(''); //Limpiado de input al ingresar un campo
+            setListTask(mapBasedUpdate);
+            insertLocalStorage('tareas', mapBasedUpdate); //Insert localStorage, key tareas
+        }else{
+            alert("Debe ingresar un texto");
+        }
+    }
+
+    //Metodo filtrado al vuelo como dice el profe. uwu
+    const lists = checkFilter ?  listTask.filter(tarea => tarea.estado === false) : listTask;
 
   return (
     <div id='divPadre'>
@@ -89,15 +104,20 @@ const Tarea = () => {
         {/* Centrar div */}
         <div id='divHijo'>
         <table className='TableTask'>
-                {listTask.length > 0 ? (
-                    listTask.map((item, index)=> (
-                        <tbody key={index}>
+                {lists.length > 0 ? (
+                    lists.map((item, index)=> (
+                        <tbody key={item.id}>
                             <td><input type="checkbox" name="checkTarea" id="checkTarea" checked={item.estado} onClick={(e) => completarTarea(index, e)} /></td>
                             {/* Poder marcar tareas como completadas. Al completarse, el texto debe tacharse. */}
                             <td className={`${item.estado ? 'strikethrough' : ''}`}>{item.nombre}</td>
                             <td>
                                 <button type="button" name="checkTarea" id="checkTarea" onClick={(e) => deleteTask(index, item, e)}>
                                     <span className="fa fa-trash-o" aria-hidden="true"></span>
+                                </button>
+                            </td>
+                            <td>
+                                <button type="button" name="checkTarea" id="checkTarea" onClick={(e) => modifyTask(index, item, e)}>
+                                    <span className="fa fa-pencil" aria-hidden="true"></span>
                                 </button>
                             </td>
                         </tbody>
