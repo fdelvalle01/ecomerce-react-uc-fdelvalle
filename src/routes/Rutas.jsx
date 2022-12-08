@@ -1,16 +1,24 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Menu from '../components/Menu/Menu'
-import Tarea from '../components/Tareas/Tarea'
-import Temporizador from '../components/Temporizador/Temporizador'
+import NavBar from '../components/NavBar/NavBar';
+import Home from '../screens/Home/Home';
+import ProductsListContainer from '../screens/Product/ProductsListContainer';
+import Cart from '../screens/Cart/Cart';
 
 const Rutas = () => {
   return (
     <BrowserRouter>
-    <Menu />
+    <NavBar />
         <Routes>
-            <Route path="/" element={<Tarea />} />
-            <Route path="/Temporizador" element={<Temporizador />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/product/:slug/:CodeId/*" element={<ProductsListContainer />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/*" element={ 
+              <div>
+                  <h1>404</h1>
+              </div>
+            }
+            />
         </Routes>
     </BrowserRouter>
   )

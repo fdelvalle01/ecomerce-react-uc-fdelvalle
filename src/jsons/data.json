@@ -1,0 +1,62 @@
+[
+  {
+    "CodeId": "1",
+    "name": "Notebook Gamer",
+    "brand": "Lenovo",
+    "description": "Disfruta de tus juegos favoritos como nunca antes con la laptop IdeaPad Gaming 3i equipada con procesadores hasta Intel® Core™ i7 de la Serie H de 10ma generación. Juega y transmite los últimos títulos AAA con velocidades de reloj de hasta 5,0 GHz, 6 núcleos, 12 MB de Intel® Smart Cache, Intel® Thermal Velocity Boost, Intel® Dynamic Tuning e Intel® Wi-Fi 6 opcional.",
+    "price": 689990,
+    "offerPrice": 629990,
+    "specifications": [
+      { "key": "Tarjeta de video", "value": "Si" },
+      { "key": "Tamaño de la pantalla", "value": "15.6 pulgadas" }
+    ],
+    "rating": 4.6,
+    "image": "https://falabella.scene7.com/is/image/Falabella/15160411_2?wid=800&hei=800&qlt=70",
+    "slug": "Computadores"
+  },
+  {
+    "CodeId": "2",
+    "name": "Notebook Gamer",
+    "brand": "Lenovo",
+    "description": "Disfruta de tus juegos favoritos como nunca antes con la laptop IdeaPad Gaming 3i equipada con procesadores hasta Intel® Core™ i7 de la Serie H de 10ma generación. Juega y transmite los últimos títulos AAA con velocidades de reloj de hasta 5,0 GHz, 6 núcleos, 12 MB de Intel® Smart Cache, Intel® Thermal Velocity Boost, Intel® Dynamic Tuning e Intel® Wi-Fi 6 opcional.",
+    "price": 689990,
+    "offerPrice": 629990,
+    "specifications": [
+      { "key": "Tarjeta de video", "value": "Si" },
+      { "key": "Tamaño de la pantalla", "value": "15.6 pulgadas" }
+    ],
+    "rating": 4.6,
+    "image": "https://falabella.scene7.com/is/image/Falabella/15160411_2?wid=800&hei=800&qlt=70",
+    "slug": "Computadores"
+  },
+  {
+    "CodeId": "3",
+    "name": "Notebook Gamer",
+    "brand": "Lenovo",
+    "description": "Disfruta de tus juegos favoritos como nunca antes con la laptop IdeaPad Gaming 3i equipada con procesadores hasta Intel® Core™ i7 de la Serie H de 10ma generación. Juega y transmite los últimos títulos AAA con velocidades de reloj de hasta 5,0 GHz, 6 núcleos, 12 MB de Intel® Smart Cache, Intel® Thermal Velocity Boost, Intel® Dynamic Tuning e Intel® Wi-Fi 6 opcional.",
+    "price": 689990,
+    "offerPrice": 629990,
+    "specifications": [
+      { "key": "Tarjeta de video", "value": "Si" },
+      { "key": "Tamaño de la pantalla", "value": "15.6 pulgadas" }
+    ],
+    "rating": 4.6,
+    "image": "https://falabella.scene7.com/is/image/Falabella/15160411_2?wid=800&hei=800&qlt=70",
+    "slug": "Computadores"
+  },
+  {
+    "CodeId": "4",
+    "name": "Notebook Gamer",
+    "brand": "Lenovo",
+    "description": "Disfruta de tus juegos favoritos como nunca antes con la laptop IdeaPad Gaming 3i equipada con procesadores hasta Intel® Core™ i7 de la Serie H de 10ma generación. Juega y transmite los últimos títulos AAA con velocidades de reloj de hasta 5,0 GHz, 6 núcleos, 12 MB de Intel® Smart Cache, Intel® Thermal Velocity Boost, Intel® Dynamic Tuning e Intel® Wi-Fi 6 opcional.",
+    "price": 689990,
+    "offerPrice": 629990,
+    "specifications": [
+      { "key": "Tarjeta de video", "value": "Si" },
+      { "key": "Tamaño de la pantalla", "value": "15.6 pulgadas" }
+    ],
+    "rating": 4.6,
+    "image": "https://falabella.scene7.com/is/image/Falabella/15160411_2?wid=800&hei=800&qlt=70",
+    "slug": "Computadores"
+  }
+]
